@@ -4,7 +4,11 @@
       <p class="total">Perguna {{currentQuestion + 1}} de {{questions.length}}</p>
       <h2>{{ questions[currentQuestion].question }}</h2>
       <ul>
-        <li v-for="item in questions[currentQuestion].options" :key="item">
+        <li 
+          v-for="item in questions[currentQuestion].options" 
+          :key="item"
+          @click="$store.commit('UPDATE_SCORE', item)"
+        >
           {{ item }}
         </li>
       </ul>
@@ -31,6 +35,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+
   .quiz-question
     text-align: center
     width: 90%
@@ -69,6 +74,4 @@ export default {
     .total
       font-weight: 600
 
-      
-      
 </style>

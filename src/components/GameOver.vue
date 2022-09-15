@@ -1,6 +1,6 @@
 <template>
   <section class="game-over">
-    <p>game over</p>
+    <p>Você acertou {{$store.state.userScore}} perguntas!</p>
     <button @click="$store.commit('RESTART')">restart</button>
   </section>
 </template>

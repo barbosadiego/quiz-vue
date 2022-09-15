@@ -30,6 +30,12 @@ export default new Vuex.Store({
       this.state.currentQuestion = 0;
       this.state.userScore = 0;
       this.state.answerSelect = null;
+    },
+    UPDATE_SCORE(state, payload){
+      if(payload === this.state.questions[this.state.currentQuestion].answer){
+        this.state.userScore++
+        console.log('acertou!', this.state.userScore)
+      }
     }
   },
   actions: {},
