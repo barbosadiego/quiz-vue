@@ -25,6 +25,12 @@ export default new Vuex.Store({
         this.state.gameStage = stages[3];
       }
     },
+    RESTART(){
+      this.state.gameStage = stages[0];
+      this.state.currentQuestion = 0;
+      this.state.userScore = 0;
+      this.state.answerSelect = null;
+    }
   },
   actions: {},
   modules: {},
