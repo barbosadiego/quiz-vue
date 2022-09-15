@@ -28,13 +28,22 @@ export default {
 <style lang="sass">
 
   $primary: #8435de
-  $white: #ffffff
-  $grey: #1c1c1c
+
+  :root 
+    --primary: #8435de
+    --white: #ffffff
+    --grey: #1c1c1c
+    --borderRadius: 5px
+  
+  *
+    box-sizing: border-box
+    margin: 0px
+    padding: 0px
 
   body
-    background-color: $grey
+    background-color: var(--grey)
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
-    color: $white
+    color: var(--white)
     margin: 0px
 
     #app
@@ -53,7 +62,7 @@ export default {
         background: linear-gradient(90deg, rgba(132, 53, 222, 1) 0%, rgba(184, 84, 232, 1) 100%)
         border-radius: 3rem
         border: none
-        color: $white
+        color: var(--white)
         &:hover
           background: linear-gradient(90deg, rgba(184, 84, 232, 1) 0%, rgba(132, 53, 222, 1) 100%)
     

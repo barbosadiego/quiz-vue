@@ -22,6 +22,7 @@ export default {
     display: flex
     flex-direction: column
     align-items: center
+    gap: 2rem
 
     h1
       text-transform: capitalize
