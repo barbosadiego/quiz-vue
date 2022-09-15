@@ -1,9 +1,9 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import questions from '@/data/questions'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import questions from '@/data/questions';
 
-Vue.use(Vuex)
-const stages = ["Start", "Category", "Playing", "End"]
+Vue.use(Vuex);
+const stages = ['Start', 'Category', 'Playing', 'End'];
 
 export default new Vuex.Store({
   state: {
@@ -13,15 +13,19 @@ export default new Vuex.Store({
     userScore: 0,
     questions,
   },
-  getters: {
-  },
+  getters: {},
   mutations: {
-    START_PLAYING(){
-      this.state.gameStage = stages[2]
-    }
+    START_PLAYING() {
+      this.state.gameStage = stages[2];
+    },
+    CHANGE_QUESTION() {
+      this.state.currentQuestion++;
+      const totalQuestions = questions.length;
+      if (this.state.currentQuestion === totalQuestions) {
+        this.state.gameStage = stages[3];
+      }
+    },
   },
-  actions: {
-  },
-  modules: {
-  }
-})
+  actions: {},
+  modules: {},
+});

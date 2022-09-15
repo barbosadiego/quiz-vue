@@ -3,6 +3,7 @@
     <Welcome />
     <main>
       <Question v-if="$store.state.gameStage === 'Playing'"/>
+      <GameOver v-if="$store.state.gameStage === 'End'"/>
       <p>estado do jogo: {{$store.state.gameStage}}</p>
     </main>
   </div>
@@ -11,12 +12,14 @@
 <script>
 import Welcome from '@/components/QuizWelcome.vue';
 import Question from '@/components/QuizQuestion.vue';
+import GameOver from '@/components/GameOver.vue';
 
 export default {
   name: 'App',
   components: {
     Welcome,
     Question,
+    GameOver,
   },
   
 }
@@ -43,8 +46,9 @@ export default {
 
       button 
         font-weight: bold
-        cursor: pointer
         font-size: 1.2rem
+        text-transform: capitalize
+        cursor: pointer
         padding: 0.8rem 1.5rem
         background: linear-gradient(90deg, rgba(132, 53, 222, 1) 0%, rgba(184, 84, 232, 1) 100%)
         border-radius: 3rem
@@ -57,7 +61,7 @@ export default {
       flex: 1
       display: flex
       flex-direction: column
-      justify-content: center
+      justify-content: space-between
       align-items: center
 
 </style>
