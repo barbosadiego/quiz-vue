@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <Welcome />
-    <main :class="[$store.state.gameStage === 'Start' ? 'start' : '']">
+    <main :class="[
+      $store.state.gameStage === 'Start' ? 'start' : '', 
+      $store.state.gameStage === 'End' ? 'end' : ''
+    ]">
       <Question v-if="$store.state.gameStage === 'Playing'"/>
       <GameOver v-if="$store.state.gameStage === 'End'"/>
     </main>
@@ -77,11 +80,14 @@ export default {
       flex-direction: column
       justify-content: space-between
       align-items: center
+      background-repeat: no-repeat
+      background-position: center center
+      background-size: contain
       &.start
+        background-image: url(./assets/quiz.svg)
+      &.end
         background-image: url(./assets/welldone.svg)
-        background-repeat: no-repeat
-        background-position: center center
-        background-size: contain
-
+        background-color: var(--grey)
+        background-blend-mode: multiply
 
 </style>

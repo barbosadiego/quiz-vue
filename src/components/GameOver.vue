@@ -10,3 +10,21 @@ export default {
   name: "GameOver",
 }
 </script>
+
+<style lang="sass" scoped>
+
+  .game-over
+    display: flex
+    flex-direction: column
+    gap: 2rem
+    margin-top: 1rem
+  
+    p
+      font-size: 2rem
+      text-align: center
+      margin-bottom: 2rem
+
+    button
+      align-self: center
+
+</style>
