@@ -15,26 +15,26 @@ export default new Vuex.Store({
   },
   getters: {},
   mutations: {
-    START_PLAYING() {
-      this.state.gameStage = stages[2];
+    START_PLAYING(state) {
+      state.gameStage = stages[2];
     },
-    CHANGE_QUESTION() {
-      this.state.currentQuestion++;
+    CHANGE_QUESTION(state) {
+      state.currentQuestion++;
       const totalQuestions = questions.length;
-      if (this.state.currentQuestion === totalQuestions) {
-        this.state.gameStage = stages[3];
+      if (state.currentQuestion === totalQuestions) {
+        state.gameStage = stages[3];
       }
     },
-    RESTART(){
-      this.state.gameStage = stages[0];
-      this.state.currentQuestion = 0;
-      this.state.userScore = 0;
-      this.state.answerSelect = null;
+    RESTART(state){
+      state.gameStage = stages[0];
+      state.currentQuestion = 0;
+      state.userScore = 0;
+      state.answerSelect = null;
     },
     UPDATE_SCORE(state, payload){
-      if(payload === this.state.questions[this.state.currentQuestion].answer){
-        this.state.userScore++
-        console.log('acertou!', this.state.userScore)
+      if(payload === state.questions[state.currentQuestion].answer){
+        state.userScore++
+        // console.log('acertou!', state.userScore)
       }
     }
   },
