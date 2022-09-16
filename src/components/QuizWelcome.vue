@@ -1,7 +1,10 @@
 <template>
   <header class="welcome">
     <h1>font-end quiz</h1>
-    <button v-if="$store.state.gameStage === 'Start'" @click="start">iniciar</button>
+    <div v-if="$store.state.gameStage === 'Start'">
+      <p>Teste seus conhencimentos de front-end!</p>
+      <button @click="start">iniciar</button>
+    </div>
   </header>
 </template>
 
@@ -31,5 +34,14 @@ export default {
       font-size: 2rem
       margin-top: 2rem
 
+    div
+      display: flex
+      flex-direction: column
+      gap: 2rem
+
+      p
+        text-align: center
+      button
+        align-self: center
     
 </style>

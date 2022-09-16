@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <Welcome />
-    <main>
+    <main :class="[$store.state.gameStage === 'Start' ? 'start' : '']">
       <Question v-if="$store.state.gameStage === 'Playing'"/>
       <GameOver v-if="$store.state.gameStage === 'End'"/>
-      <p>estado do jogo: {{$store.state.gameStage}}</p>
     </main>
+    <!-- <p>estado do jogo: {{$store.state.gameStage}}</p> -->
   </div>
 </template>
 
@@ -41,6 +41,10 @@ export default {
     margin: 0px
     padding: 0px
 
+  img
+    max-width: 100%
+    display: block
+
   body
     background-color: var(--grey)
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
@@ -73,5 +77,11 @@ export default {
       flex-direction: column
       justify-content: space-between
       align-items: center
+      &.start
+        background-image: url(./assets/welldone.svg)
+        background-repeat: no-repeat
+        background-position: center center
+        background-size: contain
+
 
 </style>

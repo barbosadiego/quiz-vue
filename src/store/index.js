@@ -43,7 +43,6 @@ export default new Vuex.Store({
 
       if(answer === option){
         state.userScore++
-        console.log('acertou', state.userScore)
       }
     },
     REORDER_QUESTIONS(state){
