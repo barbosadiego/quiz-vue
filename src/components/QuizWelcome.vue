@@ -11,6 +11,7 @@ export default {
   methods: {
     start(){
       this.$store.commit('START_PLAYING')
+      this.$store.commit('REORDER_QUESTIONS')
     }
   }
 }

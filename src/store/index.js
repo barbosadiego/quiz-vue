@@ -23,7 +23,7 @@ export default new Vuex.Store({
       state.answerSelected = false;
 
       const totalQuestions = questions.length;
-      
+
       if (state.currentQuestion === totalQuestions) {
         state.gameStage = stages[3];
       }
@@ -45,6 +45,12 @@ export default new Vuex.Store({
         state.userScore++
         console.log('acertou', state.userScore)
       }
+    },
+    REORDER_QUESTIONS(state){
+      const reorderedQuestions = state.questions.sort(() => {
+        return Math.random() -  0.5
+      })
+      return state.questions = reorderedQuestions;
     }
   },
   actions: {},
