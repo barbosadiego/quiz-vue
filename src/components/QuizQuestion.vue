@@ -7,7 +7,14 @@
         <li 
           v-for="item in questions[currentQuestion].options" 
           :key="item"
-          :class="[ 'question', $store.state.answerSelected && item === questions[currentQuestion].answer ? 'correct' : '']"
+          :class="[ 'question', 
+            $store.state.answerSelected && item === questions[currentQuestion].answer 
+            ? 'correct' 
+            : '',
+            $store.state.answerSelected && item !== questions[currentQuestion].answer 
+            ? 'wrong' 
+            : '',
+          ]"
           @click="handleClick(item)"
         >
           {{ item }}
@@ -74,10 +81,17 @@ export default {
           &.correct
             background-color: var(--correct)
             color: black
+          &.wrong
+            background-color: transparentize(#000, .9)
+            color: transparentize(#fff, .8) 
           @media screen and (min-width:1025px)
             cursor: pointer
             &:hover
               background-color: transparentize(#000, .3)
+            &.correct:hover
+              background-color: var(--correct)
+            &.wrong:hover
+              background-color: transparentize(#000, .9)
 
       button
         box-shadow: 0px 0px 0px 3px var(--white)
