@@ -33,6 +33,7 @@ export default {
     --primary: #8435de
     --white: #ffffff
     --grey: #1c1c1c
+    --correct: #0bfc03
     --borderRadius: 5px
   
   *

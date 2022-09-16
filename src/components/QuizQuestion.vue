@@ -7,12 +7,18 @@
         <li 
           v-for="item in questions[currentQuestion].options" 
           :key="item"
-          @click="$store.commit('UPDATE_SCORE', item)"
+          :class="[ 'question', $store.state.answerSelected && item === questions[currentQuestion].answer ? 'correct' : '']"
+          @click="handleClick(item)"
         >
           {{ item }}
         </li>
       </ul>
-      <button @click="$store.commit('CHANGE_QUESTION')">continuar</button>
+      <button 
+        v-if="$store.state.answerSelected" 
+        @click="$store.commit('CHANGE_QUESTION')"
+      >
+        continuar
+      </button>
     </div>
   </section>
 </template>
@@ -21,7 +27,10 @@
 
 export default {
   name: 'QuizQuestion',
-  components: {
+  methods:{
+    handleClick(payload){
+      this.$store.commit('CHECK_ANSWER', payload);
+    },
   },
   computed: {
     questions() {
@@ -57,11 +66,14 @@ export default {
       ul
         list-style: none
 
-        li
+        .question
           margin: 1rem 0px
           background-color: transparentize(#000, .6)
           padding: 1rem .5rem 
           border-radius: var(--borderRadius)
+          &.correct
+            background-color: var(--correct)
+            color: black
           @media screen and (min-width:1025px)
             cursor: pointer
             &:hover

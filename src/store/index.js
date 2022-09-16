@@ -9,7 +9,7 @@ export default new Vuex.Store({
   state: {
     gameStage: stages[0],
     currentQuestion: 0,
-    answerSelect: null,
+    answerSelected: false,
     userScore: 0,
     questions,
   },
@@ -20,7 +20,10 @@ export default new Vuex.Store({
     },
     CHANGE_QUESTION(state) {
       state.currentQuestion++;
+      state.answerSelected = false;
+
       const totalQuestions = questions.length;
+      
       if (state.currentQuestion === totalQuestions) {
         state.gameStage = stages[3];
       }
@@ -29,12 +32,18 @@ export default new Vuex.Store({
       state.gameStage = stages[0];
       state.currentQuestion = 0;
       state.userScore = 0;
-      state.answerSelect = null;
+      state.answerSelected = null;
     },
-    UPDATE_SCORE(state, payload){
-      if(payload === state.questions[state.currentQuestion].answer){
+    CHECK_ANSWER(state, payload){
+      if(state.answerSelected === payload) return state;
+
+      const answer = state.questions[state.currentQuestion].answer;
+      const option = payload;
+      state.answerSelected = payload;
+
+      if(answer === option){
         state.userScore++
-        // console.log('acertou!', state.userScore)
+        console.log('acertou', state.userScore)
       }
     }
   },
